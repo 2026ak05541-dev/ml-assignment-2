@@ -59,7 +59,7 @@ left, right = st.columns(2)
 with left:
     st.subheader("Confusion matrix")
     fig, ax = plt.subplots(figsize=(4, 3))
-    sns.heatmap(confusion_matrix(y, pred), annot=True, fmt="d", cmap="Blues",
+    sns.heatmap(confusion_matrix(y, pred), annot=True, fmt="d", cmap="Greens",
                 xticklabels=["Malignant", "Benign"], yticklabels=["Malignant", "Benign"], ax=ax)
     ax.set_xlabel("Predicted")
     ax.set_ylabel("Actual")
