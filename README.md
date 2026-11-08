@@ -12,9 +12,9 @@ Predict whether a breast tumour is **malignant** or **benign** from features com
 - **Split:** 80% train / 20% test, stratified, `random_state=41`. The test split is saved as `test_data.csv` (114 rows) and is the file to upload in the app.
 
 ## c. GitHub Repository Link
-<ADD YOUR REPO LINK>
+https://github.com/2026ak05541-dev/ml-assignment-2
 
-Live Streamlit app: <ADD YOUR STREAMLIT APP LINK>
+Live Streamlit app: https://ml-assignment-2-gerbbw8udepksatgqot6pm.streamlit.app/
 
 ```
 ml-assignment-2/
@@ -53,8 +53,8 @@ Precision, Recall and F1 are for the positive class (1 = benign).
 
 | ML Model Name | Observation about model performance |
 |---|---|
-| Logistic Regression | Logistic regression  done well 113 out of 114 test samples correct (accuracy 0.9912, MCC 0.9812). Recall is 1.0, so it didn't miss a single benign case. The one mistake was a malignant tumour predicted as benign, which is the worse kind of error for a medical problem. I think it works this well because most of the features separate the two classes almost linearly once they are scaled. |
-| Decision Tree | The Decsion Tree provided the Lowest AUC of all five (0.9420). It made 5 mistakes (accuracy 0.9561, MCC 0.9054). I limited the depth to 5 to stop it from overfitting, but a single tree still makes hard yes/no splits on one feature at a time, so it can't capture the smooth boundary as well as the other models. Its probability scores are also coarse, which is why its AUC is so much lower. |
+| Logistic Regression | Logistic Regression did well, 113 out of 114 test samples correct (accuracy 0.9912, MCC 0.9812). Recall is 1.0, so it didn't miss a single benign case. The one mistake was a malignant tumour predicted as benign, which is the worse kind of error for a medical problem. I think it works this well because most of the features separate the two classes almost linearly once they are scaled. |
+| Decision Tree | The Decision Tree provided the lowest AUC of all five (0.9420). It made 5 mistakes (accuracy 0.9561, MCC 0.9054). I limited the depth to 5 to stop it from overfitting, but a single tree still makes hard yes/no splits on one feature at a time, so it can't capture the smooth boundary as well as the other models. Its probability scores are also coarse, which is why its AUC is so much lower. |
 | KNN | The KNN Got exactly the same results as Logistic Regression and SVM (accuracy 0.9912, recall 1.0, MCC 0.9812). Scaling was really important here, since KNN uses distances and features like area are on a much bigger scale than smoothness. With k = 7 it was stable. AUC (0.9868) was slightly lower than LR and SVM. |
 | Naive Bayes | Naive Bayes has the highest AUC (0.9917), so it ranks patients by risk very well, but it has the lowest accuracy (0.9386) and MCC (0.8676) with 7 mistakes. My guess is that the "features are independent" assumption is broken in this dataset, because radius, perimeter and area are strongly correlated. That hurts the final class predictions even though the ranking is still good. |
 | Support Vector Machine | SVM Tied with Logistic Regression and KNN on accuracy, precision, recall, F1 and MCC, and had the best AUC of those three (0.9897). With the RBF kernel and scaled features it found a clean boundary between the classes. Training was slower because of `probability=True`, but on 569 rows it didn't really matter. |
